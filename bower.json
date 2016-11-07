@@ -1,0 +1,17 @@
+{
+  "name": "react.release.toggle",
+  "description": "React Release/Feature Toggle",
+  "main": "dist/index.umd.js",
+  "authors": [
+    "Nima Shahri"
+  ],
+  "license": "MIT",
+  "homepage": "https://github.com/NShahri/React.ReleaseToggle",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ]
+}

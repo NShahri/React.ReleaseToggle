@@ -1,7 +1,23 @@
 # React.ReleaseToggle
-React Release Toggle
+Feature Flag is a technique to turn some functionality of your application off, via configuration, without deploying new code. Feature flags play key part in CI scheme where features are constantly being deployed but not necessarily "released" into production.
 
-## how to install
+React.ReleaseToggle is a library which implments extendable feature flag as React component.
+
+For more infomration use the followinf links:
+- [What is a "feature flag"](http://stackoverflow.com/questions/7707383/what-is-a-feature-flag)
+- [Feature toggle](https://en.wikipedia.org/wiki/Feature_toggle)
+
+## Installation
+If you'd like to use bower, it's as easy as:
+
+``` 
+bower install React.ReleaseToggle --save
+```
+And it's just as easy with npm:
+
+```
+npm install React.ReleaseToggle --save
+```
 
 ## how to use
 
@@ -92,3 +108,26 @@ export default withReleaseToggleContext(Page)
 3. implmenting versioning for features, ie: feature1: '~1.0.2'
 4. supporting different engine for checking features
 5. server side supporting
+
+Contributing
+
+The main purpose of this repository is to continue to evolve React core, making it faster and easier to use. Development of React happens in the open on GitHub, and we are grateful to the community for contributing bugfixes and improvements. Read below to learn how you can take part in improving React.
+
+### [Code of Conduct](https://code.facebook.com/codeofconduct)
+
+Facebook has adopted a Code of Conduct that we expect project participants to adhere to. Please read the full text so that you can understand what actions will and will not be tolerated.
+
+
+## Polyfills needed to support older browsers
+
+`Array.isArray`: see [MDN](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/isArray) for details about unsupported older browsers (e.g. <= IE8) and a simple polyfill.
+
+`Object.keys`: see [MDN](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/keys) for details about unsupported older browsers (e.g. <= IE8) and a simple polyfill. This is only used in `dedupe.js`.
+
+## License
+
+[MIT](LICENSE). Copyright (c) 2016.
+
+## Authors
+
+* [Nima Shahri](https://github.com/NShahri)

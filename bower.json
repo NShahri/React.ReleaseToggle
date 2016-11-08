@@ -1,5 +1,5 @@
 {
-  "name": "react.release.toggle",
+  "name": "react.rt",
   "description": "React Release/Feature Toggle",
   "main": "dist/index.umd.js",
   "authors": [

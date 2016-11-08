@@ -7,9 +7,6 @@
   ],
   "license": "MIT",
   "homepage": "https://github.com/NShahri/React.ReleaseToggle",
-  "include": [
-    "dist"
-  ],
   "ignore": [
     "**/.*",
     "node_modules",

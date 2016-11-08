@@ -7,11 +7,20 @@
   ],
   "license": "MIT",
   "homepage": "https://github.com/NShahri/React.ReleaseToggle",
+  "include": [
+    "dist"
+  ],
   "ignore": [
     "**/.*",
     "node_modules",
     "bower_components",
     "test",
-    "tests"
+    "tests",
+    "lib",
+    ".*",
+    "*config.json",
+    "*config.js",
+    "yarn.lock",
+    "package.json"
   ]
 }

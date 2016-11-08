@@ -1,5 +1,5 @@
 {
-  "name": "react.release.toggle",
+  "name": "react.rt",
   "version": "0.0.1",
   "description": "React Release/Feature Toggle",
   "main": "dist/index.umd.js",
@@ -8,7 +8,7 @@
   "license": "MIT",
   "scripts": {
     "test": "mocha --compilers js:babel-core/register lib/**/*.spec.js",
-    "build": "cross-env NODE_ENV=production rollup -c&&uglifyjs dist/umd.js -c -m -o dist/umd.min.js",
+    "build": "cross-env NODE_ENV=production rollup -c&&uglifyjs dist/index.umd.js -c -m -o dist/index.umd.min.js",
     "prebuild": "npm-run-all flow lint test",
     "watch": "cross-env NODE_ENV=development rollup -c -w",
     "browse": "browser-sync start --server --directory --files 'dist/umd.min.js' --no-notify --cors",

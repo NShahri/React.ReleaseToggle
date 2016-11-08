@@ -8,13 +8,16 @@
   "license": "MIT",
   "scripts": {
     "test": "mocha --compilers js:babel-core/register lib/**/*.spec.js",
-    "build": "cross-env NODE_ENV=production rollup -c&&uglifyjs dist/index.umd.js -c -m -o dist/index.umd.min.js",
+    "build": "cross-env NODE_ENV=production rollup -c&&npm run sourcemap&&uglifyjs dist/index.umd.js -c -m -o dist/index.umd.min.js",
     "prebuild": "npm-run-all flow lint test",
     "watch": "cross-env NODE_ENV=development rollup -c -w",
     "browse": "browser-sync start --server --directory --files 'dist/umd.min.js' --no-notify --cors",
     "start": "npm-run-all --parallel watch browse",
     "lint": "eslint lib/js/{components,modules,libraries,config}/**/*.{js,jsx}",
-    "flow": "flow status --color always --strip-root"
+    "flow": "flow status --color always --strip-root",
+    "sourcemap": "npm-run-all --parallel sourcemap:es sourcemap:umd",
+    "sourcemap:es": "sorcery -i dist/index.js",
+    "sourcemap:umd": "sorcery -i dist/index.umd.js"
   },
   "dependencies": {
     "classnames": "^2.2.5",
@@ -52,6 +55,7 @@
     "rollup-plugin-replace": "^1.1.1",
     "rollup-watch": "^2.5.0",
     "sinon": "^1.17.6",
+    "sorcery": "^0.10.0",
     "uglify-js": "^2.7.4"
   }
 }

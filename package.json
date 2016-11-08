@@ -1,6 +1,6 @@
 {
   "name": "react.rt",
-  "version": "0.0.3",
+  "version": "0.0.4",
   "description": "React Release/Feature Toggle",
   "main": "dist/index.umd.js",
   "jsnext:main": "dist/index.js",

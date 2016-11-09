@@ -1,9 +1,9 @@
-# React.ReleaseToggle
+# React.RT
 Feature Flag is a technique to turn some functionality of your application off, via configuration, without deploying new code. Feature flags play key part in CI scheme where features are constantly being deployed but not necessarily "released" into production.
 
-React.ReleaseToggle is a library which implments extendable feature flag as React component.
+React.RT is a library which implements extendable feature flag as React component.
 
-For more infomration use the followinf links:
+For more information see the following links: 
 - [What is a "feature flag"](http://stackoverflow.com/questions/7707383/what-is-a-feature-flag)
 - [Feature toggle](https://en.wikipedia.org/wiki/Feature_toggle)
 
@@ -11,32 +11,32 @@ For more infomration use the followinf links:
 If you'd like to use bower, it's as easy as:
 
 ``` 
-bower install React.ReleaseToggle --save
+bower install react.rt --save
 ```
 And it's just as easy with npm:
 
 ```
-npm install React.ReleaseToggle --save
+npm install react.rt --save
 ```
 
 ## how to use
 
 ### es2015
 ```javascript
-import Toggle, {ToggleReleaseApp, ToggleRelease, withReleaseToggleContext} from 'toggle-release';
+import Toggle, {ToggleReleaseApp, ToggleRelease, withReleaseToggleContext} from 'react.rt';
 ```
 
 ### AMD
 ```javascript
-var Toggle = require('toggle-release');
-var ToggleReleaseApp = require('toggle-release/toggleReleaseApp');
-var ToggleRelease = require('toggle-release/toggelRelase');
+var Toggle = require('react.rt');
+var ToggleReleaseApp = require('react.rt/toggleReleaseApp');
+var ToggleRelease = require('react.rt/toggelRelase');
 ```
 
 ## Usage
 ```javascript
 <ReleaseToggleApp feature1={true} feature2={false} feature3={true}>
-    <p> ReleaseToggleApp only define context of exisiting features for all children</p>
+    <p> ReleaseToggleApp only define context of existing features for all children</p>
     <ReleaseToggle feature1={true} feature2={false} feature3={true}>
         <p>This message is visible when feature1 and feature3 are enabled and feature2 is disabled</p>
     </ReleaseToggle>
@@ -47,7 +47,7 @@ var ToggleRelease = require('toggle-release/toggelRelase');
 The ReleaseToggleApp and ReleaseToggle components take any number of arguments which can be a string or object.
 Property 'features' value will process as  
 Arrays will be recursively flattened as per the rules above:
-The argument 'foo' is short for { foo: true }. If the value of the key is falsy, it won't be included in the output.
+The argument 'foo' is short for { foo: true }. If the value of the key is false, it won't be included in the output.
 
 You can use ReleaseToggleApp to define enabled/disabled features for all children.
 You can use ReleaseToggle to check if features are matched to specified condition
@@ -105,7 +105,7 @@ export default withReleaseToggleContext(Page)
 ### backlog
 1. using cookies to get list of features
 2. using query string for list of features
-3. implmenting versioning for features, ie: feature1: '~1.0.2'
+3. implementing versioning for features, ie: feature1: '~1.0.2'
 4. supporting different engine for checking features
 5. server side supporting
 

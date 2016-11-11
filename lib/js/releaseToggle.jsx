@@ -5,7 +5,15 @@ import Context from './core/context';
 const ReleaseToggle = (props, context) => {
     let {children, features, ...otherProps} = props;
     
-    if(context.releaseToggleContext.checkFeatures(flatten(features, otherProps))){
+    let releaseToggleContext = null;
+    if(!context || !context.releaseToggleContext){
+        releaseToggleContext = Context.empty();
+    }
+    else{
+        releaseToggleContext = context.releaseToggleContext;
+    }
+
+    if(releaseToggleContext.checkFeatures(flatten(features, otherProps))){
         return (<div>{children}</div>);
     }
 

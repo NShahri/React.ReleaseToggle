@@ -9,7 +9,7 @@
   "scripts": {
     "test": "mocha --compilers js:babel-core/register lib/**/*.spec.js",
     "build": "cross-env NODE_ENV=production rollup -c&&npm run sourcemap&&uglifyjs dist/index.umd.js -c -m -o dist/index.umd.min.js",
-    "prebuild": "npm-run-all flow lint test",
+    "prebuild": "npm-run-all lint test",
     "watch": "cross-env NODE_ENV=development rollup -c -w",
     "browse": "browser-sync start --server --directory --files 'dist/umd.min.js' --no-notify --cors",
     "start": "npm-run-all --parallel watch browse",

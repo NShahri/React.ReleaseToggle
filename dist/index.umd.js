@@ -3949,6 +3949,14 @@ var Context = function () {
                 return _this2.features[c];
             }) === undefined;
         }
+    }], [{
+        key: 'empty',
+        value: function empty() {
+            if (!this.emptyContext) {
+                this.emptyContext = new Context();
+            }
+            return this.emptyContext;
+        }
     }]);
     return Context;
 }();
@@ -3959,7 +3967,14 @@ var ReleaseToggle = function ReleaseToggle(props, context) {
         otherProps = objectWithoutProperties(props, ['children', 'features']);
 
 
-    if (context.releaseToggleContext.checkFeatures(flatten(features, otherProps))) {
+    var releaseToggleContext = null;
+    if (!context || !context.releaseToggleContext) {
+        releaseToggleContext = Context.empty();
+    } else {
+        releaseToggleContext = context.releaseToggleContext;
+    }
+
+    if (releaseToggleContext.checkFeatures(flatten(features, otherProps))) {
         return react.createElement(
             'div',
             null,

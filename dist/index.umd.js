@@ -1,7 +1,7 @@
 (function (global, factory) {
 	typeof exports === 'object' && typeof module !== 'undefined' ? factory(exports) :
 	typeof define === 'function' && define.amd ? define(['exports'], factory) :
-	(factory((global.Auror = global.Auror || {})));
+	(factory((global.React = global.React || {}, global.React.RT = global.React.RT || {})));
 }(this, (function (exports) { 'use strict';
 
 function createCommonjsModule(fn, module) {
@@ -3567,481 +3567,6 @@ var react = createCommonjsModule(function (module) {
 
 module.exports = React$1;
 });
-
-var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) {
-  return typeof obj;
-} : function (obj) {
-  return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj;
-};
-
-
-
-
-
-var asyncGenerator = function () {
-  function AwaitValue(value) {
-    this.value = value;
-  }
-
-  function AsyncGenerator(gen) {
-    var front, back;
-
-    function send(key, arg) {
-      return new Promise(function (resolve, reject) {
-        var request = {
-          key: key,
-          arg: arg,
-          resolve: resolve,
-          reject: reject,
-          next: null
-        };
-
-        if (back) {
-          back = back.next = request;
-        } else {
-          front = back = request;
-          resume(key, arg);
-        }
-      });
-    }
-
-    function resume(key, arg) {
-      try {
-        var result = gen[key](arg);
-        var value = result.value;
-
-        if (value instanceof AwaitValue) {
-          Promise.resolve(value.value).then(function (arg) {
-            resume("next", arg);
-          }, function (arg) {
-            resume("throw", arg);
-          });
-        } else {
-          settle(result.done ? "return" : "normal", result.value);
-        }
-      } catch (err) {
-        settle("throw", err);
-      }
-    }
-
-    function settle(type, value) {
-      switch (type) {
-        case "return":
-          front.resolve({
-            value: value,
-            done: true
-          });
-          break;
-
-        case "throw":
-          front.reject(value);
-          break;
-
-        default:
-          front.resolve({
-            value: value,
-            done: false
-          });
-          break;
-      }
-
-      front = front.next;
-
-      if (front) {
-        resume(front.key, front.arg);
-      } else {
-        back = null;
-      }
-    }
-
-    this._invoke = send;
-
-    if (typeof gen.return !== "function") {
-      this.return = undefined;
-    }
-  }
-
-  if (typeof Symbol === "function" && Symbol.asyncIterator) {
-    AsyncGenerator.prototype[Symbol.asyncIterator] = function () {
-      return this;
-    };
-  }
-
-  AsyncGenerator.prototype.next = function (arg) {
-    return this._invoke("next", arg);
-  };
-
-  AsyncGenerator.prototype.throw = function (arg) {
-    return this._invoke("throw", arg);
-  };
-
-  AsyncGenerator.prototype.return = function (arg) {
-    return this._invoke("return", arg);
-  };
-
-  return {
-    wrap: function (fn) {
-      return function () {
-        return new AsyncGenerator(fn.apply(this, arguments));
-      };
-    },
-    await: function (value) {
-      return new AwaitValue(value);
-    }
-  };
-}();
-
-
-
-
-
-var classCallCheck = function (instance, Constructor) {
-  if (!(instance instanceof Constructor)) {
-    throw new TypeError("Cannot call a class as a function");
-  }
-};
-
-var createClass = function () {
-  function defineProperties(target, props) {
-    for (var i = 0; i < props.length; i++) {
-      var descriptor = props[i];
-      descriptor.enumerable = descriptor.enumerable || false;
-      descriptor.configurable = true;
-      if ("value" in descriptor) descriptor.writable = true;
-      Object.defineProperty(target, descriptor.key, descriptor);
-    }
-  }
-
-  return function (Constructor, protoProps, staticProps) {
-    if (protoProps) defineProperties(Constructor.prototype, protoProps);
-    if (staticProps) defineProperties(Constructor, staticProps);
-    return Constructor;
-  };
-}();
-
-
-
-
-
-
-
-var _extends = Object.assign || function (target) {
-  for (var i = 1; i < arguments.length; i++) {
-    var source = arguments[i];
-
-    for (var key in source) {
-      if (Object.prototype.hasOwnProperty.call(source, key)) {
-        target[key] = source[key];
-      }
-    }
-  }
-
-  return target;
-};
-
-var get = function get(object, property, receiver) {
-  if (object === null) object = Function.prototype;
-  var desc = Object.getOwnPropertyDescriptor(object, property);
-
-  if (desc === undefined) {
-    var parent = Object.getPrototypeOf(object);
-
-    if (parent === null) {
-      return undefined;
-    } else {
-      return get(parent, property, receiver);
-    }
-  } else if ("value" in desc) {
-    return desc.value;
-  } else {
-    var getter = desc.get;
-
-    if (getter === undefined) {
-      return undefined;
-    }
-
-    return getter.call(receiver);
-  }
-};
-
-var inherits = function (subClass, superClass) {
-  if (typeof superClass !== "function" && superClass !== null) {
-    throw new TypeError("Super expression must either be null or a function, not " + typeof superClass);
-  }
-
-  subClass.prototype = Object.create(superClass && superClass.prototype, {
-    constructor: {
-      value: subClass,
-      enumerable: false,
-      writable: true,
-      configurable: true
-    }
-  });
-  if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass;
-};
-
-
-
-
-
-
-
-
-
-var objectWithoutProperties = function (obj, keys) {
-  var target = {};
-
-  for (var i in obj) {
-    if (keys.indexOf(i) >= 0) continue;
-    if (!Object.prototype.hasOwnProperty.call(obj, i)) continue;
-    target[i] = obj[i];
-  }
-
-  return target;
-};
-
-var possibleConstructorReturn = function (self, call) {
-  if (!self) {
-    throw new ReferenceError("this hasn't been initialised - super() hasn't been called");
-  }
-
-  return call && (typeof call === "object" || typeof call === "function") ? call : self;
-};
-
-
-
-var set = function set(object, property, value, receiver) {
-  var desc = Object.getOwnPropertyDescriptor(object, property);
-
-  if (desc === undefined) {
-    var parent = Object.getPrototypeOf(object);
-
-    if (parent !== null) {
-      set(parent, property, value, receiver);
-    }
-  } else if ("value" in desc && desc.writable) {
-    desc.value = value;
-  } else {
-    var setter = desc.set;
-
-    if (setter !== undefined) {
-      setter.call(receiver, value);
-    }
-  }
-
-  return value;
-};
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-var toConsumableArray = function (arr) {
-  if (Array.isArray(arr)) {
-    for (var i = 0, arr2 = Array(arr.length); i < arr.length; i++) arr2[i] = arr[i];
-
-    return arr2;
-  } else {
-    return Array.from(arr);
-  }
-};
-
-function flatten() {
-    var features = {};
-
-    for (var _len = arguments.length, args = Array(_len), _key = 0; _key < _len; _key++) {
-        args[_key] = arguments[_key];
-    }
-
-    args.forEach(function (arg) {
-        if (!arg) {
-            return;
-        }
-        var argType = typeof arg === 'undefined' ? 'undefined' : _typeof(arg);
-
-        if (argType === 'string') {
-            features[arg] = true;
-        } else if (argType === 'number') {
-            features[arg] = true;
-        } else if (Array.isArray(arg)) {
-            Object.assign(features, flatten.apply(undefined, toConsumableArray(arg)));
-        } else if (argType === 'object') {
-            for (var key in arg) {
-                if (arg.hasOwnProperty(key)) {
-                    features[key] = arg[key];
-                }
-            }
-        }
-    });
-
-    return features;
-}
-
-var Context = function () {
-    function Context(features) {
-        classCallCheck(this, Context);
-
-        this.features = features || {};
-    }
-
-    createClass(Context, [{
-        key: 'checkFeatures',
-        value: function checkFeatures(features) {
-            return this._isAllFeaturesEnabled(this._enabledFeatures(features)) && this._isAllFeaturesDisabled(this._disabledFeatures(features));
-        }
-    }, {
-        key: '_enabledFeatures',
-        value: function _enabledFeatures(features) {
-            var result = {};
-            for (var key in features) {
-                if (features[key]) {
-                    result[key] = true;
-                }
-            }
-
-            return result;
-        }
-    }, {
-        key: '_disabledFeatures',
-        value: function _disabledFeatures(features) {
-            var result = {};
-            for (var key in features) {
-                if (!features[key]) {
-                    result[key] = false;
-                }
-            }
-
-            return result;
-        }
-    }, {
-        key: '_isAllFeaturesEnabled',
-        value: function _isAllFeaturesEnabled(checks) {
-            var _this = this;
-
-            if (!checks) {
-                return true;
-            }
-
-            return Object.keys(checks).find(function (c) {
-                return !_this.features[c];
-            }) === undefined;
-        }
-    }, {
-        key: '_isAllFeaturesDisabled',
-        value: function _isAllFeaturesDisabled(checks) {
-            var _this2 = this;
-
-            if (!checks) {
-                return true;
-            }
-
-            return Object.keys(checks).find(function (c) {
-                return _this2.features[c];
-            }) === undefined;
-        }
-    }], [{
-        key: 'empty',
-        value: function empty() {
-            if (!this.emptyContext) {
-                this.emptyContext = new Context();
-            }
-            return this.emptyContext;
-        }
-    }]);
-    return Context;
-}();
-
-var ReleaseToggle = function ReleaseToggle(props, context) {
-    var children = props.children,
-        features = props.features,
-        otherProps = objectWithoutProperties(props, ['children', 'features']);
-
-
-    var releaseToggleContext = null;
-    if (!context || !context.releaseToggleContext) {
-        releaseToggleContext = Context.empty();
-    } else {
-        releaseToggleContext = context.releaseToggleContext;
-    }
-
-    if (releaseToggleContext.checkFeatures(flatten(features, otherProps))) {
-        return react.createElement(
-            'div',
-            null,
-            children
-        );
-    }
-
-    return null;
-};
-
-ReleaseToggle.propTypes = {
-    children: react.PropTypes.node,
-    features: react.PropTypes.oneOfType([react.PropTypes.object, react.PropTypes.array])
-};
-
-ReleaseToggle.contextTypes = {
-    releaseToggleContext: react.PropTypes.instanceOf(Context)
-};
-
-var ReleaseToggleApp = function (_React$Component) {
-    inherits(ReleaseToggleApp, _React$Component);
-
-    function ReleaseToggleApp(props, context) {
-        classCallCheck(this, ReleaseToggleApp);
-        return possibleConstructorReturn(this, (ReleaseToggleApp.__proto__ || Object.getPrototypeOf(ReleaseToggleApp)).call(this, props, context));
-    }
-
-    createClass(ReleaseToggleApp, [{
-        key: 'getChildContext',
-        value: function getChildContext() {
-            var _props = this.props,
-                children = _props.children,
-                features = _props.features,
-                otherProps = objectWithoutProperties(_props, ['children', 'features']);
-
-            var parentFeatures = ((this.context || {}).releaseToggleContext || {}).features || {};
-            var releaseToggleContext = new Context(flatten(parentFeatures, features, otherProps));
-            return { releaseToggleContext: releaseToggleContext };
-        }
-    }, {
-        key: 'render',
-        value: function render() {
-            var children = this.props.children;
-
-
-            return children.length ? react.createElement(
-                'div',
-                null,
-                children
-            ) : children;
-        }
-    }]);
-    return ReleaseToggleApp;
-}(react.Component);
-
-ReleaseToggleApp.propTypes = {
-    children: react.PropTypes.node,
-    features: react.PropTypes.oneOfType([react.PropTypes.object, react.PropTypes.array])
-};
-
-ReleaseToggleApp.childContextTypes = {
-    releaseToggleContext: react.PropTypes.instanceOf(Context)
-};
-
-ReleaseToggleApp.contextTypes = {
-    releaseToggleContext: react.PropTypes.instanceOf(Context)
-};
 
 var DOMProperty = createCommonjsModule(function (module) {
 /**
@@ -19578,7 +19103,482 @@ var index$2 = createCommonjsModule(function (module) {
 module.exports = ReactDOM$1;
 });
 
-var withReleaseToggle = function (Component) {
+var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) {
+  return typeof obj;
+} : function (obj) {
+  return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj;
+};
+
+
+
+
+
+var asyncGenerator = function () {
+  function AwaitValue(value) {
+    this.value = value;
+  }
+
+  function AsyncGenerator(gen) {
+    var front, back;
+
+    function send(key, arg) {
+      return new Promise(function (resolve, reject) {
+        var request = {
+          key: key,
+          arg: arg,
+          resolve: resolve,
+          reject: reject,
+          next: null
+        };
+
+        if (back) {
+          back = back.next = request;
+        } else {
+          front = back = request;
+          resume(key, arg);
+        }
+      });
+    }
+
+    function resume(key, arg) {
+      try {
+        var result = gen[key](arg);
+        var value = result.value;
+
+        if (value instanceof AwaitValue) {
+          Promise.resolve(value.value).then(function (arg) {
+            resume("next", arg);
+          }, function (arg) {
+            resume("throw", arg);
+          });
+        } else {
+          settle(result.done ? "return" : "normal", result.value);
+        }
+      } catch (err) {
+        settle("throw", err);
+      }
+    }
+
+    function settle(type, value) {
+      switch (type) {
+        case "return":
+          front.resolve({
+            value: value,
+            done: true
+          });
+          break;
+
+        case "throw":
+          front.reject(value);
+          break;
+
+        default:
+          front.resolve({
+            value: value,
+            done: false
+          });
+          break;
+      }
+
+      front = front.next;
+
+      if (front) {
+        resume(front.key, front.arg);
+      } else {
+        back = null;
+      }
+    }
+
+    this._invoke = send;
+
+    if (typeof gen.return !== "function") {
+      this.return = undefined;
+    }
+  }
+
+  if (typeof Symbol === "function" && Symbol.asyncIterator) {
+    AsyncGenerator.prototype[Symbol.asyncIterator] = function () {
+      return this;
+    };
+  }
+
+  AsyncGenerator.prototype.next = function (arg) {
+    return this._invoke("next", arg);
+  };
+
+  AsyncGenerator.prototype.throw = function (arg) {
+    return this._invoke("throw", arg);
+  };
+
+  AsyncGenerator.prototype.return = function (arg) {
+    return this._invoke("return", arg);
+  };
+
+  return {
+    wrap: function (fn) {
+      return function () {
+        return new AsyncGenerator(fn.apply(this, arguments));
+      };
+    },
+    await: function (value) {
+      return new AwaitValue(value);
+    }
+  };
+}();
+
+
+
+
+
+var classCallCheck = function (instance, Constructor) {
+  if (!(instance instanceof Constructor)) {
+    throw new TypeError("Cannot call a class as a function");
+  }
+};
+
+var createClass = function () {
+  function defineProperties(target, props) {
+    for (var i = 0; i < props.length; i++) {
+      var descriptor = props[i];
+      descriptor.enumerable = descriptor.enumerable || false;
+      descriptor.configurable = true;
+      if ("value" in descriptor) descriptor.writable = true;
+      Object.defineProperty(target, descriptor.key, descriptor);
+    }
+  }
+
+  return function (Constructor, protoProps, staticProps) {
+    if (protoProps) defineProperties(Constructor.prototype, protoProps);
+    if (staticProps) defineProperties(Constructor, staticProps);
+    return Constructor;
+  };
+}();
+
+
+
+
+
+
+
+var _extends = Object.assign || function (target) {
+  for (var i = 1; i < arguments.length; i++) {
+    var source = arguments[i];
+
+    for (var key in source) {
+      if (Object.prototype.hasOwnProperty.call(source, key)) {
+        target[key] = source[key];
+      }
+    }
+  }
+
+  return target;
+};
+
+var get = function get(object, property, receiver) {
+  if (object === null) object = Function.prototype;
+  var desc = Object.getOwnPropertyDescriptor(object, property);
+
+  if (desc === undefined) {
+    var parent = Object.getPrototypeOf(object);
+
+    if (parent === null) {
+      return undefined;
+    } else {
+      return get(parent, property, receiver);
+    }
+  } else if ("value" in desc) {
+    return desc.value;
+  } else {
+    var getter = desc.get;
+
+    if (getter === undefined) {
+      return undefined;
+    }
+
+    return getter.call(receiver);
+  }
+};
+
+var inherits = function (subClass, superClass) {
+  if (typeof superClass !== "function" && superClass !== null) {
+    throw new TypeError("Super expression must either be null or a function, not " + typeof superClass);
+  }
+
+  subClass.prototype = Object.create(superClass && superClass.prototype, {
+    constructor: {
+      value: subClass,
+      enumerable: false,
+      writable: true,
+      configurable: true
+    }
+  });
+  if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass;
+};
+
+
+
+
+
+
+
+
+
+var objectWithoutProperties = function (obj, keys) {
+  var target = {};
+
+  for (var i in obj) {
+    if (keys.indexOf(i) >= 0) continue;
+    if (!Object.prototype.hasOwnProperty.call(obj, i)) continue;
+    target[i] = obj[i];
+  }
+
+  return target;
+};
+
+var possibleConstructorReturn = function (self, call) {
+  if (!self) {
+    throw new ReferenceError("this hasn't been initialised - super() hasn't been called");
+  }
+
+  return call && (typeof call === "object" || typeof call === "function") ? call : self;
+};
+
+
+
+var set = function set(object, property, value, receiver) {
+  var desc = Object.getOwnPropertyDescriptor(object, property);
+
+  if (desc === undefined) {
+    var parent = Object.getPrototypeOf(object);
+
+    if (parent !== null) {
+      set(parent, property, value, receiver);
+    }
+  } else if ("value" in desc && desc.writable) {
+    desc.value = value;
+  } else {
+    var setter = desc.set;
+
+    if (setter !== undefined) {
+      setter.call(receiver, value);
+    }
+  }
+
+  return value;
+};
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+var toConsumableArray = function (arr) {
+  if (Array.isArray(arr)) {
+    for (var i = 0, arr2 = Array(arr.length); i < arr.length; i++) arr2[i] = arr[i];
+
+    return arr2;
+  } else {
+    return Array.from(arr);
+  }
+};
+
+function flatten() {
+    var features = {};
+
+    for (var _len = arguments.length, args = Array(_len), _key = 0; _key < _len; _key++) {
+        args[_key] = arguments[_key];
+    }
+
+    args.forEach(function (arg) {
+        if (!arg) {
+            return;
+        }
+        var argType = typeof arg === 'undefined' ? 'undefined' : _typeof(arg);
+
+        if (argType === 'string') {
+            features[arg] = true;
+        } else if (argType === 'number') {
+            features[arg] = true;
+        } else if (Array.isArray(arg)) {
+            Object.assign(features, flatten.apply(undefined, toConsumableArray(arg)));
+        } else if (argType === 'object') {
+            for (var key in arg) {
+                if (arg.hasOwnProperty(key)) {
+                    features[key] = arg[key];
+                }
+            }
+        }
+    });
+
+    return features;
+}
+
+var Context = function () {
+    function Context(features) {
+        classCallCheck(this, Context);
+
+        this.features = features || {};
+    }
+
+    createClass(Context, [{
+        key: 'checkFeatures',
+        value: function checkFeatures(features) {
+            return this._isAllFeaturesEnabled(this._enabledFeatures(features)) && this._isAllFeaturesDisabled(this._disabledFeatures(features));
+        }
+    }, {
+        key: '_enabledFeatures',
+        value: function _enabledFeatures(features) {
+            var result = {};
+            for (var key in features) {
+                if (features[key]) {
+                    result[key] = true;
+                }
+            }
+
+            return result;
+        }
+    }, {
+        key: '_disabledFeatures',
+        value: function _disabledFeatures(features) {
+            var result = {};
+            for (var key in features) {
+                if (!features[key]) {
+                    result[key] = false;
+                }
+            }
+
+            return result;
+        }
+    }, {
+        key: '_isAllFeaturesEnabled',
+        value: function _isAllFeaturesEnabled(checks) {
+            var _this = this;
+
+            if (!checks) {
+                return true;
+            }
+
+            return Object.keys(checks).find(function (c) {
+                return !_this.features[c];
+            }) === undefined;
+        }
+    }, {
+        key: '_isAllFeaturesDisabled',
+        value: function _isAllFeaturesDisabled(checks) {
+            var _this2 = this;
+
+            if (!checks) {
+                return true;
+            }
+
+            return Object.keys(checks).find(function (c) {
+                return _this2.features[c];
+            }) === undefined;
+        }
+    }], [{
+        key: 'empty',
+        value: function empty() {
+            if (!this.emptyContext) {
+                this.emptyContext = new Context();
+            }
+            return this.emptyContext;
+        }
+    }]);
+    return Context;
+}();
+
+var ReleaseToggle = function ReleaseToggle(props, context) {
+    var children = props.children,
+        features = props.features,
+        otherProps = objectWithoutProperties(props, ['children', 'features']);
+
+
+    var releaseToggleContext = null;
+    if (!context || !context.releaseToggleContext) {
+        releaseToggleContext = Context.empty();
+    } else {
+        releaseToggleContext = context.releaseToggleContext;
+    }
+
+    if (releaseToggleContext.checkFeatures(flatten(features, otherProps))) {
+        return react.createElement(
+            'div',
+            null,
+            children
+        );
+    }
+
+    return null;
+};
+
+ReleaseToggle.propTypes = {
+    children: react.PropTypes.node,
+    features: react.PropTypes.oneOfType([react.PropTypes.object, react.PropTypes.array])
+};
+
+ReleaseToggle.contextTypes = {
+    releaseToggleContext: react.PropTypes.instanceOf(Context)
+};
+
+var ReleaseToggleApp = function (_React$Component) {
+    inherits(ReleaseToggleApp, _React$Component);
+
+    function ReleaseToggleApp(props, context) {
+        classCallCheck(this, ReleaseToggleApp);
+        return possibleConstructorReturn(this, (ReleaseToggleApp.__proto__ || Object.getPrototypeOf(ReleaseToggleApp)).call(this, props, context));
+    }
+
+    createClass(ReleaseToggleApp, [{
+        key: 'getChildContext',
+        value: function getChildContext() {
+            var _props = this.props,
+                children = _props.children,
+                features = _props.features,
+                otherProps = objectWithoutProperties(_props, ['children', 'features']);
+
+            var parentFeatures = ((this.context || {}).releaseToggleContext || {}).features || {};
+            var releaseToggleContext = new Context(flatten(parentFeatures, features, otherProps));
+            return { releaseToggleContext: releaseToggleContext };
+        }
+    }, {
+        key: 'render',
+        value: function render() {
+            var children = this.props.children;
+
+
+            return children.length ? react.createElement(
+                'div',
+                null,
+                children
+            ) : children;
+        }
+    }]);
+    return ReleaseToggleApp;
+}(react.Component);
+
+ReleaseToggleApp.propTypes = {
+    children: react.PropTypes.node,
+    features: react.PropTypes.oneOfType([react.PropTypes.object, react.PropTypes.array])
+};
+
+ReleaseToggleApp.childContextTypes = {
+    releaseToggleContext: react.PropTypes.instanceOf(Context)
+};
+
+ReleaseToggleApp.contextTypes = {
+    releaseToggleContext: react.PropTypes.instanceOf(Context)
+};
+
+var withReleaseToggleContext = function (Component) {
 
     var WithReleaseToggleContext = function WithReleaseToggleContext(props, context) {
         return react.createElement(Component, _extends({}, props, { releaseToggleContext: context.releaseToggleContext }));
@@ -19591,35 +19591,59 @@ var withReleaseToggle = function (Component) {
     return WithReleaseToggleContext;
 };
 
-var TestComponent = function (_React$Component) {
-    inherits(TestComponent, _React$Component);
+var CurrentTogglesView = function (_React$Component) {
+    inherits(CurrentTogglesView, _React$Component);
 
-    function TestComponent() {
-        classCallCheck(this, TestComponent);
-        return possibleConstructorReturn(this, (TestComponent.__proto__ || Object.getPrototypeOf(TestComponent)).apply(this, arguments));
+    function CurrentTogglesView() {
+        classCallCheck(this, CurrentTogglesView);
+        return possibleConstructorReturn(this, (CurrentTogglesView.__proto__ || Object.getPrototypeOf(CurrentTogglesView)).apply(this, arguments));
     }
 
-    createClass(TestComponent, [{
+    createClass(CurrentTogglesView, [{
         key: 'render',
         value: function render() {
-            var _this2 = this;
+            var features = this.props.releaseToggleContext.features;
 
-            var nima = Object.keys(this.props.releaseToggleContext.features).map(function (m) {
-                return m + '=' + _this2.props.releaseToggleContext.features[m];
-            }).join(',');
             return react.createElement(
                 'div',
                 null,
-                'NNNNNNNNN',
-                this.displayName,
-                nima
+                Object.keys(features).map(function (key) {
+                    return react.createElement(
+                        'div',
+                        { key: key },
+                        key,
+                        ':',
+                        features[key].toString()
+                    );
+                })
             );
         }
     }]);
-    return TestComponent;
+    return CurrentTogglesView;
 }(react.Component);
 
-var TestComponent$1 = withReleaseToggle(TestComponent);
+CurrentTogglesView.propTypes = {
+    releaseToggleContext: react.PropTypes.instanceOf(Context)
+};
+
+CurrentTogglesView.defaultProps = {
+    releaseToggleContext: Context.empty()
+};
+
+var CurrentTogglesView$1 = withReleaseToggleContext(CurrentTogglesView);
+
+var WithReleaseToggleContext = function (Component) {
+
+    var WithReleaseToggleContext = function WithReleaseToggleContext(props, context) {
+        return react.createElement(Component, _extends({}, props, { releaseToggleContext: context.releaseToggleContext }));
+    };
+
+    WithReleaseToggleContext.contextTypes = {
+        releaseToggleContext: react.PropTypes.instanceOf(Context)
+    };
+
+    return WithReleaseToggleContext;
+};
 
 var MyApp = function () {
     function MyApp() {
@@ -19644,7 +19668,7 @@ var MyApp = function () {
                             'new feature implemented'
                         )
                     ),
-                    react.createElement(TestComponent$1, { nn: '12' }),
+                    react.createElement(CurrentTogglesView$1, null),
                     react.createElement(
                         ReleaseToggleApp,
                         { features: ['newFeature3', 'newFeature5'], newFeature4: true },
@@ -19657,7 +19681,7 @@ var MyApp = function () {
                                 'new feature implemented 33'
                             )
                         ),
-                        react.createElement(TestComponent$1, null)
+                        react.createElement(CurrentTogglesView$1, null)
                     )
                 )
             ), el);
@@ -19666,6 +19690,10 @@ var MyApp = function () {
     return MyApp;
 }();
 
+exports.ReleaseToggle = ReleaseToggle;
+exports.ReleaseToggleApp = ReleaseToggleApp;
+exports.CurrentTogglesView = CurrentTogglesView$1;
+exports.withReleaseToggleContext = WithReleaseToggleContext;
 exports.MyApp = MyApp;
 
 Object.defineProperty(exports, '__esModule', { value: true });

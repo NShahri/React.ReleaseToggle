@@ -6,6 +6,7 @@ import nodeResolve from 'rollup-plugin-node-resolve';
 //import globals from 'rollup-plugin-node-globals';
 //import uglify from 'rollup-plugin-uglify';
 import replace from 'rollup-plugin-replace';
+import sourcemaps from 'rollup-plugin-sourcemaps';
 
 let pkg = require('./package.json');
 
@@ -43,20 +44,21 @@ export default {
         nodeResolve({
             jsnext: true,
             main: true
-        })//,
+        }),
+        sourcemaps()
         //(process.env.NODE_ENV === 'production' && uglify({filename: 'umd.min.js'}))
     ],
     targets: [
         {
             dest: pkg['main'],
             format: 'umd',
-            moduleName: 'Auror',
+            moduleName: 'React.RT',
             sourceMap: true,
         },
         {
             dest: pkg['jsnext:main'],
             format: 'es',
-            moduleName: 'Auror',
+            moduleName: 'React.RT',
             sourceMap: true
         }
     ]

@@ -90,6 +90,7 @@ You can use ReleaseToggleApp nested in another ReleaseToggleApp. In the followin
 
 If you want to display context on your application you can use CurrentTogglesView. 
 We do not recomment to use this component in your production release, but it can be useful for testing purposes.
+
 ```javascript
 <CurrentTogglesView />
 ```
@@ -136,9 +137,15 @@ Please read the full text so that you can understand what actions will and will 
 
 ## Polyfills needed to support older browsers
 
-`Array.isArray`: see [MDN](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/isArray) for details about unsupported older browsers (e.g. <= IE8) and a simple polyfill.
+`Array.isArray`: see [MDN](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/isArray) for details about unsupported older browsers and a simple polyfill.
 
-`Object.keys`: see [MDN](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/keys) for details about unsupported older browsers (e.g. <= IE8) and a simple polyfill. This is only used in `dedupe.js`.
+`Object.keys`: see [MDN](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/keys) for details about unsupported older browsers and a simple polyfill.
+
+`Array.map`: see [MDN](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/map) for details about unsupported older browsers and a simple polyfill.
+
+`Object.assign`: see [MDN](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/assign) for details about unsupported older browsers and a simple polyfill.
+
+`Array.find`: see [MDN](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/find) for details about unsupported older browsers and a simple polyfill.
 
 ## License
 

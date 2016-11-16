@@ -21,7 +21,6 @@
   },
   "dependencies": {
     "classnames": "^2.2.5",
-    "core-js": "^2.4.1",
     "empty": "^0.10.1",
     "react": "^15.3.2",
     "react-dom": "^15.3.2",

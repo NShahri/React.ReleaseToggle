@@ -4,7 +4,7 @@ import Context from './core/context';
 import warning from 'warning';
 
 const ReleaseToggle = (props, context) => {
-    let {children, className, features, ...otherProps} = props;
+    let {children, className, features, style, ...otherProps} = props;
 
     let releaseToggleContext = null;
     if(!context || !context.releaseToggleContext){
@@ -20,7 +20,7 @@ const ReleaseToggle = (props, context) => {
     }
 
     if(releaseToggleContext.checkFeatures(flatten(features, otherProps))){
-        return (<div className={className}>{children}</div>);
+        return (<div className={className} style={style}>{children}</div>);
     }
 
     return null;
@@ -29,11 +29,13 @@ const ReleaseToggle = (props, context) => {
 ReleaseToggle.propTypes = {
     children: React.PropTypes.node,
     features: React.PropTypes.oneOfType([React.PropTypes.object, React.PropTypes.array]),
-    className: React.PropTypes.string.isRequired
+    className: React.PropTypes.string.isRequired,
+    style: React.PropTypes.object.isRequired
 };
 
 ReleaseToggle.defaultProps ={
-    className: ''
+    className: '',
+    style: {}
 };
 
 ReleaseToggle.contextTypes = {

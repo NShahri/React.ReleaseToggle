@@ -8,32 +8,39 @@ For more information see the following links:
 - [Feature toggle](https://en.wikipedia.org/wiki/Feature_toggle)
 
 ## Installation
-If you'd like to use bower, it's as easy as:
-
-``` 
-bower install react.rt --save
-```
-And it's just as easy with npm:
+You can install React.RT with npm:
 
 ```
 npm install react.rt --save
 ```
 
-## how to use
+And it's just as easy with bower:
+``` 
+bower install react.rt --save
+```
 
-### es2015
+## Importing
+
+### ES2015
+
 ```javascript
-import Toggle, {ToggleReleaseApp, ToggleRelease, withReleaseToggleContext} from 'react.rt';
+import Toggle from 'react.rt';
+```
+or
+
+```javascript
+import {ToggleReleaseApp, ToggleRelease, withReleaseToggleContext, CurrentTogglesView} from 'react.rt';
 ```
 
 ### AMD
 ```javascript
 var Toggle = require('react.rt');
-var ToggleReleaseApp = require('react.rt/toggleReleaseApp');
-var ToggleRelease = require('react.rt/toggelRelase');
 ```
 
-## Usage
+## Basic Usage
+You can use ReleaseToggleApp to define enabled/disabled features for all children.
+You can use ReleaseToggle to check if features are matched to specified condition.
+
 ```javascript
 <ReleaseToggleApp feature1={true} feature2={false} feature3={true}>
     <p> ReleaseToggleApp only define context of existing features for all children</p>
@@ -41,26 +48,6 @@ var ToggleRelease = require('react.rt/toggelRelase');
         <p>This message is visible when feature1 and feature3 are enabled and feature2 is disabled</p>
     </ReleaseToggle>
 </ReleaseToggleApp>
-```
-
-### defining features
-The ReleaseToggleApp and ReleaseToggle components take any number of arguments which can be a string or object.
-Property 'features' value will process as  
-Arrays will be recursively flattened as per the rules above:
-The argument 'foo' is short for { foo: true }. If the value of the key is false, it won't be included in the output.
-
-You can use ReleaseToggleApp to define enabled/disabled features for all children.
-You can use ReleaseToggle to check if features are matched to specified condition
-
-### Other ways of ReleaseToggle usage
-```javascript
-<ReleaseToggle features={{feature1:true, feature2:false, feature3:true}}>
-        <p>This message is visible when feature1 and feature3 are enabled and feature2 is disabled</p>
-</ReleaseToggle>
-
-<ReleaseToggle features={['feature1', 'feature3']} feature2={false}>
-        <p>This message is visible when feature1 and feature3 are enabled and feature2 is disabled</p>
-</ReleaseToggle>
 ```
 
 ### Pass context as property to React component
@@ -84,6 +71,47 @@ class Page extends React.Component{
 
 export default withReleaseToggleContext(Page)
 ```
+
+### nested contexts
+
+You can use ReleaseToggleApp nested in another ReleaseToggleApp. In the following sample nested ReleaseToggleApp will override feature2 and message should be visisble.
+
+```javascript
+<ReleaseToggleApp feature1={true} feature2={false} feature3={true}>
+    <ReleaseToggleApp feature2={true}>
+        <ReleaseToggle feature1={true} feature2={true} feature3={true}>
+            <p>This message is visible when feature1, feature2 and feature3 are enabled</p>
+        </ReleaseToggle>
+    </ReleaseToggleApp>
+</ReleaseToggleApp>
+```
+
+### Display Context
+
+If you want to display context on your application you can use CurrentTogglesView. 
+We do not recomment to use this component in your production release, but it can be useful for testing purposes.
+```javascript
+<CurrentTogglesView />
+```
+
+### API
+The ReleaseToggleApp and ReleaseToggle components take any number of arguments which can be a string or object. also property 'features' value will process as object of features.  
+
+Arrays will be recursively flattened as per the rules above:
+The argument 'foo' is short for { foo: true }. If the value of the key is false, it won't be included in the output.
+
+
+### Other ways of ReleaseToggle usage
+```javascript
+<ReleaseToggle features={{feature1:true, feature2:false, feature3:true}}>
+        <p>This message is visible when feature1 and feature3 are enabled and feature2 is disabled</p>
+</ReleaseToggle>
+
+<ReleaseToggle features={['feature1', 'feature3']} feature2={false}>
+        <p>This message is visible when feature1 and feature3 are enabled and feature2 is disabled</p>
+</ReleaseToggle>
+```
+
 ### Other ways of using releaseToggleApp
 ```javascript
 <ReleaseToggleApp features={{feature1:true, feature2:false, feature3:true}}>
@@ -93,14 +121,6 @@ export default withReleaseToggleContext(Page)
 </ReleaseToggleApp>
 ```
 
-### nested contexts
-
-```javascript
-<ReleaseToggleApp features={{feature1:true, feature2:false, feature3:true}}>
-    <ReleaseToggleApp features={{feature1:true, feature2:false, feature3:true}}>
-    </ReleaseToggleApp>
-</ReleaseToggleApp>
-```
 
 ### backlog
 1. using cookies to get list of features

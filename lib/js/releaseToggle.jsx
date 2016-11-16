@@ -1,12 +1,18 @@
 import React from 'react';
 import flatten from './core/flatten';
 import Context from './core/context';
+import warning from 'warning';
 
 const ReleaseToggle = (props, context) => {
-    let {children, features, ...otherProps} = props;
-    
+    let {children, className, features, ...otherProps} = props;
+
     let releaseToggleContext = null;
     if(!context || !context.releaseToggleContext){
+        warning(false, 'Not defined context. Empty default context is used.', 'ReactCompositeComponent');
+        releaseToggleContext = Context.empty();
+    }
+    else if(!context.releaseToggleContext.checkFeatures)
+    {
         releaseToggleContext = Context.empty();
     }
     else{
@@ -14,7 +20,7 @@ const ReleaseToggle = (props, context) => {
     }
 
     if(releaseToggleContext.checkFeatures(flatten(features, otherProps))){
-        return (<div>{children}</div>);
+        return (<div className={className}>{children}</div>);
     }
 
     return null;
@@ -22,7 +28,12 @@ const ReleaseToggle = (props, context) => {
 
 ReleaseToggle.propTypes = {
     children: React.PropTypes.node,
-    features: React.PropTypes.oneOfType([React.PropTypes.object, React.PropTypes.array])
+    features: React.PropTypes.oneOfType([React.PropTypes.object, React.PropTypes.array]),
+    className: React.PropTypes.string.isRequired
+};
+
+ReleaseToggle.defaultProps ={
+    className: ''
 };
 
 ReleaseToggle.contextTypes = {

@@ -8,7 +8,7 @@ import replace from 'rollup-plugin-replace';
 let pkg = require('./package.json');
 
 export default {
-    entry: 'lib/js/index.jsx',
+    entry: 'lib/js/index.js',
     plugins: [
         babel({
             babelrc: false,

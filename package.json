@@ -25,7 +25,8 @@
     "empty": "^0.10.1",
     "react": "^15.3.2",
     "react-dom": "^15.3.2",
-    "react-prop-types": "^0.4.0"
+    "react-prop-types": "^0.4.0",
+    "warning": "^3.0.0"
   },
   "devDependencies": {
     "babel-eslint": "^7.0.0",

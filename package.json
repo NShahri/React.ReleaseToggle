@@ -1,8 +1,16 @@
 {
   "name": "react.rt",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "React Release/Feature Toggle",
-  "keywords": ["react.rt", "react", "release", "feature", "toggle", "switch", "rt"],
+  "keywords": [
+    "react.rt",
+    "react",
+    "release",
+    "feature",
+    "toggle",
+    "switch",
+    "rt"
+  ],
   "homepage": "https://github.com/NShahri/React.ReleaseToggle",
   "bugs": "https://github.com/NShahri/React.ReleaseToggle/issues",
   "main": "dist/index.umd.js",

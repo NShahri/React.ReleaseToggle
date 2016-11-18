@@ -8,16 +8,16 @@ class ReleaseToggleApp extends React.Component {
     }
 
     getChildContext() {
-        let {children, styles, features, ...otherProps} = this.props; 
+        let {children, style, features, ...otherProps} = this.props; 
         let parentFeatures = ((this.context || {}).releaseToggleContext || {}).features || {};
         let releaseToggleContext = new Context(flatten(parentFeatures, features, otherProps));
         return { releaseToggleContext };
     }
 
     render() {
-        let {children, styles, className} = this.props;
+        let {children, style, className} = this.props;
 
-        return (children.length ? <div className={className} styles={styles}>{children}</div> : children);
+        return (children ? <div className={className} style={style}>{children}</div> : null);
     }
 }
 
@@ -25,12 +25,12 @@ ReleaseToggleApp.propTypes = {
     children: React.PropTypes.node,
     features: React.PropTypes.oneOfType([React.PropTypes.object, React.PropTypes.array]),
     className: React.PropTypes.string.isRequired,
-    styles: React.PropTypes.object.isRequired
+    style: React.PropTypes.object.isRequired
 };
 
 ReleaseToggleApp.defaultProps = {
     className: '',
-    styles: {}
+    style: {}
 };
 
 ReleaseToggleApp.childContextTypes = {

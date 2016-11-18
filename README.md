@@ -62,7 +62,7 @@ We think it is nicer and easier to use withReleaseToggleContext which hide the i
 import React from 'react';
 import { withReleaseToggleContext } from 'release-toggle';
 
-class Page extends React.Component{
+class MyView extends React.Component{
     let features = this.props.releaseToggleContext.features;
     let result = Object.keys(features).map(m=>m+'='+features[m]).join(',');
     render() {
@@ -70,7 +70,7 @@ class Page extends React.Component{
     }
 }
 
-export default withReleaseToggleContext(Page)
+export default withReleaseToggleContext(MyView)
 ```
 
 ### nested contexts

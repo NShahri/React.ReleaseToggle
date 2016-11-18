@@ -19,7 +19,7 @@ const ReleaseToggle = (props, context) => {
         releaseToggleContext = context.releaseToggleContext;
     }
 
-    if(releaseToggleContext.checkFeatures(flatten(features, otherProps))){
+    if(children && releaseToggleContext.checkFeatures(flatten(features, otherProps))){
         return (<div className={className} style={style}>{children}</div>);
     }
 

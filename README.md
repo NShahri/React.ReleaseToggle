@@ -39,6 +39,7 @@ var Toggle = require('react.rt');
 
 ## Basic Usage
 You can use ReleaseToggleApp to define enabled/disabled features for all children.
+
 You can use ReleaseToggle to check if features are matched to specified condition.
 
 ```javascript
@@ -89,6 +90,7 @@ You can use ReleaseToggleApp nested in another ReleaseToggleApp. In the followin
 ### Display Context
 
 If you want to display context on your application you can use CurrentTogglesView. 
+
 We do not recomment to use this component in your production release, but it can be useful for testing purposes.
 
 ```javascript
@@ -123,16 +125,23 @@ The argument 'foo' is short for { foo: true }. If the value of the key is false,
 ```
 
 
-### backlog
-1. using cookies to get list of features
-2. using query string for list of features
-3. implementing versioning for features, ie: feature1: '~1.0.2'
-4. supporting different engine for checking features
-5. server side supporting
+### Future works
+1. Documentation (in progress)
+1. Moe unit tests (in progress)
+1. Using build server
+1. Fixing bower package
+1. Publishing es6 and umd of each modules which can be used in any other application build process
+1. Using cookies to get list of features
+1. Using query string for list of features
+1. Implementing versioning for features, ie: feature1: '~1.0.2'
+1. Supporting different engine for checking features
+1. Server side supporting
 
 ### Contributing
+Use [GitHub issues](https://github.com/NShahri/React.ReleaseToggle/issues) for requests.
 
-We expect project participants to adhere to [Code of Conduct](). 
+I actively welcome pull requests.
+I expect project participants to adhere to [Code of Conduct](). 
 Please read the full text so that you can understand what actions will and will not be tolerated.
 
 ## Polyfills needed to support older browsers

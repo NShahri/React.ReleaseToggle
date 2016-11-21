@@ -1,5 +1,6 @@
 # React.RT
-Feature Flag is a technique to turn some functionality of your application off, via configuration, without deploying new code. Feature flags play key part in CI scheme where features are constantly being deployed but not necessarily "released" into production.
+Feature Flag is a technique to turn some functionality of your application off, via configuration, without deploying new code. 
+Feature flags play key part in CI scheme where features are constantly being deployed but not necessarily "released" into production.
 
 React.RT is a library which implements extendable feature flag as React component.
 
@@ -124,10 +125,9 @@ The argument 'foo' is short for { foo: true }. If the value of the key is false,
 </ReleaseToggleApp>
 ```
 
-
 ### Future works
 1. Documentation (in progress)
-1. Moe unit tests (in progress)
+1. More unit tests (in progress)
 1. Using build server
 1. Fixing bower package
 1. Publishing es6 and umd of each modules which can be used in any other application build process
@@ -142,7 +142,6 @@ Use [GitHub issues](https://github.com/NShahri/React.ReleaseToggle/issues) for r
 
 I actively welcome pull requests.
 I expect project participants to adhere to [Code of Conduct](). 
-Please read the full text so that you can understand what actions will and will not be tolerated.
 
 ## Polyfills needed to support older browsers
 

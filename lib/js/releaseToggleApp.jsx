@@ -8,7 +8,7 @@ class ReleaseToggleApp extends React.Component {
     }
 
     getChildContext() {
-        let {children, style, features, ...otherProps} = this.props; 
+        let {children, className, style, features, ...otherProps} = this.props; 
         let parentFeatures = ((this.context || {}).releaseToggleContext || {}).features || {};
         let releaseToggleContext = new Context(flatten(parentFeatures, features, otherProps));
         return { releaseToggleContext };

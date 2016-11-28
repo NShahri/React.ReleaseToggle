@@ -4044,7 +4044,7 @@ var ReleaseToggle = function ReleaseToggle(props, context) {
         releaseToggleContext = context.releaseToggleContext;
     }
 
-    if (releaseToggleContext.checkFeatures(flatten(features, otherProps))) {
+    if (children && releaseToggleContext.checkFeatures(flatten(features, otherProps))) {
         return react.createElement(
             'div',
             { className: className, style: style },
@@ -4084,9 +4084,10 @@ var ReleaseToggleApp = function (_React$Component) {
         value: function getChildContext() {
             var _props = this.props,
                 children = _props.children,
-                styles = _props.styles,
+                className = _props.className,
+                style = _props.style,
                 features = _props.features,
-                otherProps = objectWithoutProperties(_props, ['children', 'styles', 'features']);
+                otherProps = objectWithoutProperties(_props, ['children', 'className', 'style', 'features']);
 
             var parentFeatures = ((this.context || {}).releaseToggleContext || {}).features || {};
             var releaseToggleContext = new Context(flatten(parentFeatures, features, otherProps));
@@ -4097,15 +4098,15 @@ var ReleaseToggleApp = function (_React$Component) {
         value: function render() {
             var _props2 = this.props,
                 children = _props2.children,
-                styles = _props2.styles,
+                style = _props2.style,
                 className = _props2.className;
 
 
-            return children.length ? react.createElement(
+            return children ? react.createElement(
                 'div',
-                { className: className, styles: styles },
+                { className: className, style: style },
                 children
-            ) : children;
+            ) : null;
         }
     }]);
     return ReleaseToggleApp;
@@ -4115,12 +4116,12 @@ ReleaseToggleApp.propTypes = {
     children: react.PropTypes.node,
     features: react.PropTypes.oneOfType([react.PropTypes.object, react.PropTypes.array]),
     className: react.PropTypes.string.isRequired,
-    styles: react.PropTypes.object.isRequired
+    style: react.PropTypes.object.isRequired
 };
 
 ReleaseToggleApp.defaultProps = {
     className: '',
-    styles: {}
+    style: {}
 };
 
 ReleaseToggleApp.childContextTypes = {
@@ -4159,7 +4160,7 @@ var CurrentTogglesView = function (_React$Component) {
 
             return react.createElement(
                 'div',
-                null,
+                { style: this.props.style, className: this.props.className },
                 Object.keys(features).map(function (key) {
                     return react.createElement(
                         'div',

@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/react/15.3.2/react.js" ></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/react/15.3.2/react-dom.js" ></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/babel-standalone/6.18.1/babel.min.js"></script>
+        <script src="https://rawgit.com/NShahri/React.ReleaseToggle/master/dist/index.umd.min.js" ></script>
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    </head>
+    <body class="container">
+        <div id="container" />
+        <script type="text/babel" data-presets="es2015,react">
+            ReactDOM.render(
+                <React.RT.ReleaseToggleApp feature1={true} feature2={Math.random()} className='panel panel-primary'>
+                    <div className='panel-heading '>
+                        <h3 className="panel-title">React.RT App demo.</h3>
+                        <pre className="html">
+                            <code className="language-html">
+                                &lt;React.RT.ReleaseToggleApp feature1=true feature2=Math.random() /&gt;
+                            </code>
+                        </pre>
+                    </div>
+                    <div className="panel-body">
+                        <React.RT.CurrentTogglesView className="alert alert-danger" />
+                        <React.RT.ReleaseToggleApp feature3={true} feature2={false} className='panel panel-info' style={{ marginLeft: '100px', marginRight: '100px'}}>
+                            <div className='panel-heading'>
+                                <h3 className="panel-title">Nested React.RT App demo.</h3>
+                                <pre className="html">
+                                    <code className="language-html">&lt;React.RT.ReleaseToggleApp feature3=true feature2=false /&gt;</code> 
+                                </pre>
+                            </div>
+                            <div className="panel-body">
+                                <React.RT.CurrentTogglesView className="alert alert-danger" />
+                                <React.RT.ReleaseToggle feature1={true} feature3={true} feature2={false} className="alert alert-success">
+                                    <pre className="html">
+                                        <code className="language-html">&lt;React.RT.ReleaseToggle feature1=true feature3=true feature2=false /&gt;</code> 
+                                    </pre>
+                                    When feature1 and feature3 are enabled and feature2 is disabled you should be able to see this text.
+                                </React.RT.ReleaseToggle>
+                            </div>
+                        </React.RT.ReleaseToggleApp>,
+                        <React.RT.ReleaseToggle feature1 className="alert alert-success">
+                            <pre className="html">
+                                <code className="language-html">&lt;React.RT.ReleaseToggle feature1 /&gt;</code> 
+                            </pre>
+                            When feature1 is enabled you should be able to see this text.
+                        </React.RT.ReleaseToggle>
+                        <React.RT.ReleaseToggle feature3={false} className="alert alert-success">
+                            <pre className="html">
+                                <code className="language-html">&lt;React.RT.ReleaseToggle feature3=false /&gt;</code> 
+                            </pre>
+                            When feature3 is disabled you should be able to see this text.
+                        </React.RT.ReleaseToggle> 
+                    </div>
+                </React.RT.ReleaseToggleApp>,
+                document.getElementById('container'));
+        </script>
+    </body>
+</html>

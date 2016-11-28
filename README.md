@@ -22,7 +22,7 @@ bower install react.rt --save
 
 # Live Demo
 
-(https://rawgit.com/NShahri/React.ReleaseToggle/master/lib/js/demo.html)[https://rawgit.com/NShahri/React.ReleaseToggle/master/lib/js/demo.html]
+[https://rawgit.com/NShahri/React.ReleaseToggle/master/lib/js/demo.html](https://rawgit.com/NShahri/React.ReleaseToggle/master/lib/js/demo.html)
 
 ## Importing
 
